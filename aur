@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+package_name=$1
+if [[ -z "$package_name" ]]; then
+  echo "Usage: $0 package_name" && exit
+fi
+
+# Install deps
+sudo pacman -S --needed fuse2 gtkmm linux-headers ncurses libcanberra pcsclite
+
+working_dir=$(mktemp --directory)
+
+cd "$working_dir"
+wget "https://aur.archlinux.org/cgit/aur.git/snapshot/$package_name.tar.gz"
+
+tar -xvf "$package_name.tar.gz"
+cd "$package_name"
+
+makepkg -sir
+
