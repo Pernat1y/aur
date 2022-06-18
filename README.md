@@ -1,2 +1,2 @@
 # aur
-Simple AF Aur installer for Arch Linux
+Simple AUR (https://aur.archlinux.org/) installer for Arch Linux in Bash
